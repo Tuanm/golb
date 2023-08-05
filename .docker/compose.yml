@@ -1,0 +1,18 @@
+services:
+  loadbalancer:
+    build:
+      context: .
+      dockerfile: Containerfile
+    ports:
+      - 8080:8081
+    networks:
+      - golb
+  redis:
+    image: redis
+    networks:
+      - golb
+
+networks:
+  golb:
+    name: golb
+    external: true
